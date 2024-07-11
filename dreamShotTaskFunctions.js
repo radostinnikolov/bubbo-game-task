@@ -64,11 +64,11 @@ function bonusPointsFunction(wantedColor='all'){
     let bubblesCount = getBubbleCount(wantedColor);
     let renderedImagesCount = getRenderedImagesCount(wantedColor);
     if (bubblesCount === renderedImagesCount){
-        console.log(`Bubbles - ${wantedColor} count and rendered images - ${wantedColor} count are equal! - ${bubblesCount}`)
+        console.log(`Bubbles - "${wantedColor}" count and rendered images - "${wantedColor}" count are equal! - ${bubblesCount}`)
     } else {
-        console.log(`Bubbles - ${wantedColor} count and rendered images - ${wantedColor} count are not equal!`)
+        console.log(`Bubbles - "${wantedColor}" count and rendered images - "${wantedColor}" count are not equal!`)
     }
 }
 
-bonusPointsFunction('red');
+bonusPointsFunction();
 

@@ -41,22 +41,34 @@ function getBubbleCount(wantedColor="all"){
     return count;
 }
 
-function getRenderedImagesCount(){
+function getRenderedImagesCount(wantedColor='all'){
     let bubbles = window.bubbleGame.gridContainer.children;
-    let textures = [];
+    let validColors = ['red', 'blue', 'green', 'yellow', 'timer', 'bomb', 'super']
+    let count = 0;
     for(i in bubbles){
-        textures.push(bubbles[i].children[0].children[1]._texture.textureCacheIds[0])
+        if (bubbles[i].children[0].children[1]._texture.textureCacheIds[0] === `bubble-${wantedColor}`){
+            count += 1;
+        } else {
+            if (validColors.includes(wantedColor)){
+                continue
+            } else {
+                count += 1;
+            }
+            
+        }
     }
-    return textures.length;
+    return count;
 }
 
-function bonusPointsFunction(){
-    let bubblesCount = getBubbleCount();
-    let renderedImagesCount = getRenderedImagesCount();
+function bonusPointsFunction(wantedColor='all'){
+    let bubblesCount = getBubbleCount(wantedColor);
+    let renderedImagesCount = getRenderedImagesCount(wantedColor);
     if (bubblesCount === renderedImagesCount){
-        console.log(`Bubbles count and rendered images count are equal! - ${bubblesCount}`)
+        console.log(`Bubbles - ${wantedColor} count and rendered images - ${wantedColor} count are equal! - ${bubblesCount}`)
     } else {
-        console.log("Bubbles count and rendered images count are not equal!")
+        console.log(`Bubbles - ${wantedColor} count and rendered images - ${wantedColor} count are not equal!`)
     }
 }
+
+bonusPointsFunction('red');
 
